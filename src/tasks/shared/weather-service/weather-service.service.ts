@@ -18,7 +18,7 @@ export class WeatherServiceService {
       const responseData = await lastValueFrom(
         this.httpService
           .get(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=pt_br&exclude=hourly,daily&appid=c6752ce2571c6019d096a93bdb9131b3`,
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=pt_br&units=metric&exclude=hourly,daily,minutely&appid=c6752ce2571c6019d096a93bdb9131b3`,
           )
           .pipe(
             map((obj: AxiosResponse) => {

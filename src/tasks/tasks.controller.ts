@@ -16,7 +16,10 @@ export class TasksController {
       countyData.latitude,
       countyData.longitude,
     );
-    console.log('forecastData.current', forecastData.current);
-    return forecastData.current.weather;
+    return {
+      weather: forecastData.current.weather,
+      temperature: forecastData.current.temp,
+      feelsLike: forecastData.current.feels_like,
+    };
   }
 }
