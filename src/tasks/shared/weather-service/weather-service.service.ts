@@ -34,7 +34,7 @@ export class WeatherServiceService {
       return responseData;
     } catch (error) {
       console.log('error:>>', error);
-      throw new Error('Error getForecast');
+      throw error;
     }
   }
 }
