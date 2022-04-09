@@ -13,12 +13,15 @@ export class WeatherServiceService {
 
   async getForecast(lat: string, lon: string) {
     try {
-      console.log('latitude', lat);
-      console.log('longitude', lon);
+      const metric = 'metric'; //Celsius
+      const apiKey = 'c6752ce2571c6019d096a93bdb9131b3';
+      const baseURL = 'https://api.openweathermap.org/data/2.5/onecall';
+      const exclude = 'exclude=hourly,daily,minutely';
+      //Converter para pasta de gitignore posteriormente
       const responseData = await lastValueFrom(
         this.httpService
           .get(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=pt_br&units=metric&exclude=hourly,daily,minutely&appid=c6752ce2571c6019d096a93bdb9131b3`,
+            `${baseURL}?lat=${lat}&lon=${lon}&lang=pt_br&units=${metric}&${exclude}&appid=${apiKey}`,
           )
           .pipe(
             map((obj: AxiosResponse) => {
