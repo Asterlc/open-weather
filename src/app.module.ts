@@ -11,7 +11,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     TasksModule,
     ConfigModule.forRoot({
-      envFilePath: [`.env.dev` || `.env.prod`],
+      envFilePath: [`.env.prod` || '.env.dev'],
     }),
     MongooseModule.forRoot(
       `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@cluster0.5mmts.mongodb.net/counties?retryWrites=true&w=majority`,
