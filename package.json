@@ -15,7 +15,7 @@
     "test:prod1": "cross-env NODE_ENV=prod && npm run start",
     "start:backend": "json-server --watch backend/counties.json --port 9000",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "cross-env NODE_ENV=prod && node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
