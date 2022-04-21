@@ -10,7 +10,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "prod": "cross-env NODE_ENV=prod && npm run start",
-    "start": "nest start",
+    "start:i": "nest start",
     "start:dev": "cross-env NODE_ENV=dev && nest start --watch",
     "test:prod": "cross-env NODE_ENV=prod && npm run start",
     "start:backend": "json-server --watch backend/counties.json --port 9000",
