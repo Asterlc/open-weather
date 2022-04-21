@@ -4,15 +4,23 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
+
 
 @Module({
   imports: [
     TasksModule,
+    ConfigModule.forRoot({
+      envFilePath: [`.env.dev` || `.env.prod`],
+    }),
     MongooseModule.forRoot(
-      'mongodb+srv://admin:212427@cluster0.5mmts.mongodb.net/counties?retryWrites=true&w=majority',
+      `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@cluster0.5mmts.mongodb.net/counties?retryWrites=true&w=majority`,
     ),
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
+
+// `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@cluster0.5mmts.mongodb.net/counties?retryWrites=true&w=majority`,
+
