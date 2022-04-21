@@ -13,7 +13,7 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "prod": "cross-env NODE_ENV=production && npm run start",
+    "prod": "npm run start",
     "start:i": "nest start",
     "start:dev": "cross-env NODE_ENV=dev && nest start --watch",
     "test:prod1": "cross-env NODE_ENV=prod && npm run start",
