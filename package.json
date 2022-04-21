@@ -12,7 +12,7 @@
     "prod": "cross-env NODE_ENV=production && npm run start",
     "start:i": "nest start",
     "start:dev": "cross-env NODE_ENV=dev && nest start --watch",
-    "test:prod": "cross-env NODE_ENV=prod && npm run start",
+    "test:prod1": "cross-env NODE_ENV=prod && npm run start",
     "start:backend": "json-server --watch backend/counties.json --port 9000",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
