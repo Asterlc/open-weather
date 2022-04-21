@@ -24,10 +24,7 @@ export class WeatherServiceService {
             `${baseURL}?lat=${lat}&lon=${lon}&lang=pt_br&units=${metric}&${exclude}&appid=${apiKey}`,
           )
           .pipe(
-            map((obj: AxiosResponse) => {
-              console.log('obj.data', obj.data);
-              return obj.data;
-            }),
+            map((obj: AxiosResponse) => obj.data),
             tap((data) => console.log(data[0])),
           ),
       );
