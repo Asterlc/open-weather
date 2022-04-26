@@ -5,9 +5,9 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .setTitle('Open Weather API')
+    .setTitle('Forecast API - Brasil')
     .setDescription('Informações clima e tempo dos municípios brasileiros')
-    .setVersion('1.0.2')
+    .setVersion('1.0.3')
     .addTag('Forecast')
     .build();
   const document = SwaggerModule.createDocument(app, config);
