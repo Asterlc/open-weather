@@ -7,11 +7,11 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Open Weather API')
     .setDescription('Informações clima e tempo dos municípios brasileiros')
-    .setVersion('1.0.0')
+    .setVersion('1.0.1')
     .addTag('Forecast')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('doc', app, document);
+  SwaggerModule.setup('documentation', app, document);
 
   await app.listen(process.env.PORT || 8095);
 }
