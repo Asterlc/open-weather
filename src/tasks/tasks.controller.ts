@@ -13,7 +13,7 @@ export class TasksController {
   @ApiOperation({ summary: 'Pesquisar clima-tempo de um município brasileiro' })
   @ApiParam({
     name: 'nome',
-    description: 'Nome do município',
+    description: 'Nome do município deve respeitar caracteres maiúsculos e minnúsculos',
     allowEmptyValue: false,
     examples: {
       a: {
@@ -25,6 +25,11 @@ export class TasksController {
         summary: 'Vitória',
         description: 'Clima e tempo do município de Vitória',
         value: 'Vitória',
+      },
+      c: {
+        summary: 'São José dos Campos',
+        description: 'Clima e tempo do município de São José dos Campos',
+        value: 'São José dos Campos',
       },
     },
   })
