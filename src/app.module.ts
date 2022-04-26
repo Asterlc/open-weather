@@ -14,13 +14,10 @@ import { ConfigModule } from '@nestjs/config';
       envFilePath: [`.env.prod` || '.env.dev'],
     }),
     MongooseModule.forRoot(
-      `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@cluster0.5mmts.mongodb.net/counties?retryWrites=true&w=majority`,
+      `${process.env.MONGODB_URI}`,
     ),
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule { }
-
-// `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@cluster0.5mmts.mongodb.net/counties?retryWrites=true&w=majority`,
-
