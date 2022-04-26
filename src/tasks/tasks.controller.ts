@@ -13,7 +13,7 @@ export class TasksController {
   @ApiOperation({ summary: 'Pesquisar clima-tempo de um município brasileiro' })
   @ApiParam({
     name: 'nome',
-    description: 'Nome do município deve respeitar caracteres maiúsculos e minnúsculos',
+    description: 'Nome do município deve respeitar caracteres maiúsculos e minúsculos',
     allowEmptyValue: false,
     examples: {
       a: {
