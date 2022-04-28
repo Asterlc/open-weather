@@ -14,7 +14,7 @@ export class WeatherServiceService {
   async getForecast(lat: string, lon: string) {
     try {
       const metric = 'metric'; //Celsius
-      const apiKey = 'c6752ce2571c6019d096a93bdb9131b3';
+      const apiKey = process.env.API_KEY
       const baseURL = 'https://api.openweathermap.org/data/2.5/onecall';
       const exclude = 'exclude=hourly,daily,minutely';
       //Converter para pasta de gitignore posteriormente
