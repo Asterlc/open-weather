@@ -8,7 +8,7 @@ export class TasksController {
   constructor(
     private weatherService: WeatherServiceService,
     private countyService: CountyServiceService,
-  ) {}
+  ) { }
   @ApiTags('Forecast')
   @ApiOperation({ summary: 'Pesquisar clima-tempo de um município brasileiro' })
   @ApiParam({
@@ -40,11 +40,11 @@ export class TasksController {
       countyData?.latitude,
       countyData?.longitude,
     );
-    return {
+    return JSON.stringify({
       weather: forecastData?.current?.weather,
       temperatureCelsius: forecastData?.current?.temp,
       windSpeed: forecastData?.current?.wind_speed,
       feelsLikeCelsius: forecastData?.current?.feels_like,
-    };
+    }, null, 4);
   }
 }
