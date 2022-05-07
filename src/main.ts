@@ -5,7 +5,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const corsOptions = {
-    origin: 'https://forecast-brasil.herokuapp.com/',
+    origin: 'https://forecast-brasil.herokuapp.com/home',
     optionsSuccessStatus: 200 || 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
