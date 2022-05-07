@@ -9,8 +9,13 @@ async function bootstrap() {
     optionsSuccessStatus: 200 || 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
-  app.enableCors(corsOptions);
-
+  // app.enableCors();
+  app.enableCors(
+    { 
+      origin: ['https://forecast-brasil.herokuapp.com/home', 'https://forecast-brasil.herokuapp.com'],
+      methods: ['POST', 'PUT', 'DELETE', 'GET']
+    }
+  );
   const config = new DocumentBuilder()
     .setTitle('Forecast API - Brasil')
     .setDescription('Informações clima e tempo dos municípios brasileiros')
