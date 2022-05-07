@@ -4,24 +4,17 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const allowedDomains = ['https://forecast-brasil.herokuapp.com/'];
-  const options = {
-    origin: (origin: any, cb: any) => {
-      if (allowedDomains.includes(origin)) {
-        cb(null, origin);
-      } else {
-        cb(Error('invalid origin'));
-      }
-    },
-    methods: 'GET,HEAD',
+  const corsOptions = {
+    origin: 'https://forecast-brasil.herokuapp.com/',
+    optionsSuccessStatus: 200 || 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
-  app.enableCors(options);
+  app.enableCors(corsOptions);
 
   const config = new DocumentBuilder()
     .setTitle('Forecast API - Brasil')
     .setDescription('Informações clima e tempo dos municípios brasileiros')
-    .setVersion('1.0.3')
+    .setVersion('0.0.4')
     .addTag('Forecast')
     .build();
   const document = SwaggerModule.createDocument(app, config);
