@@ -17,7 +17,7 @@ export class WeatherServiceService {
       const apiKey = process.env.API_KEY
       const baseURL = 'https://api.openweathermap.org/data/2.5/onecall';
       const exclude = 'exclude=hourly,daily,minutely';
-      //Converter para pasta de gitignore posteriormente
+
       const responseData = await lastValueFrom(
         this.httpService
           .get(
@@ -28,6 +28,7 @@ export class WeatherServiceService {
             tap((data) => console.log(data[0])),
           ),
       );
+      
       return responseData;
     } catch (error) {
       console.log('error:>>', error);
