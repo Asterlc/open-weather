@@ -40,17 +40,17 @@ export class TasksController {
       countyData?.latitude,
       countyData?.longitude,
     );
+
     return JSON.stringify({
       weather: forecastData?.current?.weather,
       temperatureCelsius: forecastData?.current?.temp,
-      windSpeed: forecastData?.current?.wind_speed, 
+      windSpeed: forecastData?.current?.wind_speed,
       feelsLikeCelsius: forecastData?.current?.feels_like,
       humidity: forecastData?.current?.humidity,
       dewPoint: forecastData?.current?.dew_point,
       wind_direction: forecastData?.current?.wind_deg,
       maxUVI: forecastData?.current?.uvi,
       clouds: forecastData?.current?.clouds,
-      wind_gust: forecastData?.current?.wind_gust 
     }, null, 4);
   }
 }
