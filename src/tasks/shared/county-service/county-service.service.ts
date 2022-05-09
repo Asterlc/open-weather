@@ -11,11 +11,14 @@ export class CountyServiceService {
 
   async getCountyByName(name: string) {
     try {
-      const responseData = await this.countyModel.find({'countyName': name}).exec();
+      const query = name ? { 'countyName': { $regex: `.*${name.trim()}*.`, $options: 'i' } } : {};
+      console.log('query', query);
+      // const responseData = await this.countyModel.find({ 'countyName': name }).exec();
+      const responseData = await this.countyModel.find(query).exec();
       return responseData
 
     } catch (error) {
-      console.log('error:>>', error);
+      // console.log('error:>>', error);
       throw new Error('County not found');
     }
   }
