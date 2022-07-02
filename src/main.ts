@@ -9,17 +9,17 @@ async function bootstrap() {
     optionsSuccessStatus: 200 || 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
-  // app.enableCors();
-  app.enableCors(
-    { 
-      origin: ['https://forecast-brasil.herokuapp.com/home', 'https://forecast-brasil.herokuapp.com'],
-      methods: ['POST', 'PUT', 'DELETE', 'GET']
-    }
-  );
+  app.enableCors();
+  // app.enableCors(
+  //   { 
+  //     origin: ['https://forecast-brasil.herokuapp.com/home', 'https://forecast-brasil.herokuapp.com'],
+  //     methods: ['POST', 'PUT', 'DELETE', 'GET']
+  //   }
+  // );
   const config = new DocumentBuilder()
     .setTitle('Forecast API - Brasil')
     .setDescription('Informações clima e tempo dos municípios brasileiros')
-    .setVersion('0.0.4')
+    .setVersion('1.0.0')
     .addTag('Forecast')
     .build();
   const document = SwaggerModule.createDocument(app, config);
