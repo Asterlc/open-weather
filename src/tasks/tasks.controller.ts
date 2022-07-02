@@ -5,6 +5,8 @@ import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import {
   currentWeatherHelper,
   currentSummaryHelper,
+  historicalWeatherHelper,
+  historicalSummary
 } from './shared/helpers/summary.helper';
 
 @Controller('forecast')
@@ -37,17 +39,17 @@ export class TasksController {
     };
   }
 
-  //Paid subscription not a free service
-  // @ApiOperation(historicalSummary)
-  // @ApiParam(historicalWeatherHelper)
-  // @Get(':nome/:data')
-  // async getCountyHistorical(@Param('nome') name: string, @Param('data') timestamp: string) {
-  //   const [countyData] = await this.countyService.getCountyByName(name);
-  //   const historicalWeather = await this.weatherService.getHistoricalWeather(
-  //     countyData?.latitude,
-  //     countyData?.longitude,
-  //     timestamp
-  //   )
-  //   return historicalWeather;
-  // }
+  //Paid subscription not a free service get only 5 days back
+  @ApiOperation(historicalSummary)
+  @ApiParam(historicalWeatherHelper)
+  @Get(':municipio/:data')
+  async getCountyHistorical(@Param('municipio') name: string, @Param('data') timestamp: Date ) {
+    const [countyData] = await this.countyService.getCountyByName(name);
+    const historicalWeather = await this.weatherService.getFiveDaysBack(
+      countyData?.latitude,
+      countyData?.longitude,
+      timestamp
+    )
+    return historicalWeather;
+  }
 }

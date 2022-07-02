@@ -1,9 +1,9 @@
 {
   "name": "open-weather",
   "version": "0.0.1",
-  "engines" : { 
-    "node" : "14.17.0",
-    "npm" : "6.14.13"
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
   },
   "description": "",
   "author": "Lucas Aster",
@@ -26,7 +26,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "heroku-postbuild":"npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "@nestjs/axios": "0.0.7",

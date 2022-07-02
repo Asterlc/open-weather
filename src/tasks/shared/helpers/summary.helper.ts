@@ -24,10 +24,10 @@ export const currentWeatherHelper = {
 export const currentSummaryHelper = { summary: 'Pesquisar clima-tempo de um município brasileiro' };
 
 export const historicalWeatherHelper = {
-    name: 'nome',
+    name: 'municipio',
     timestamp: 'data',
-    description: 'Nome do municipío e data para pesquisar histórico de clima-tempo',
+    description: 'Nome do municipío e data(yyyy/mm/dd) para pesquisar histórico de clima-tempo dos ultimos 5 dias',
     allowEmptyValues: false,
 };
 
-export const historicalSummary = { summary: 'Pesquisar dados históricos de clima-tempo' };
+export const historicalSummary = { summary: 'Pesquisar dados de clima-tempo dos ultimos 5 dias' };

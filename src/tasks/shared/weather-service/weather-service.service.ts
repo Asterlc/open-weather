@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { AxiosResponse } from 'axios';
 import { lastValueFrom, map, tap } from 'rxjs';
@@ -28,30 +28,25 @@ export class WeatherServiceService {
       );
       return responseData;
     } catch (error) {
-      console.log('error:>>', error);
-      throw error;
+      throw new HttpException(`${error.response.data.message}`, HttpStatus.BAD_REQUEST);
     }
   }
 
-  //Paid subscription not a free service
-  // async getHistoricalWeather(lat: string, lon: string, time: string) {
-  //   try {
-  //     console.log('this.apiKey :>> ', this.apiKey);
-  //     const unixTimestamp = Math.floor(new Date(time).getTime() / 1000);
-  //     console.log(unixTimestamp);
-  //     const respondeData = await lastValueFrom(
-  //       this.httpService
-  //         .get(`${this.historicalURL}?lat=${lat}&lon=${lon}&dt=${unixTimestamp}&units=${this.metric}&appid=${this.apiKey}`)
-  //         .pipe(
-  //           map((obj: AxiosResponse) => obj.data),
-  //           tap((data) => console.log(data[0]))
-  //         )
-  //     )
-  //     return respondeData;
-  //   } catch (error) {
-  //     console.log('error :>> ', error);
-  //     throw error;
-  //   }
-  // }
-
+  //Paid subscription not a free service get only 5 days back
+  async getFiveDaysBack(lat: string, lon: string, time: Date) {
+    try {
+      const unixTimestamp = Math.floor(new Date(time).getTime() / 1000);
+      const respondeData = await lastValueFrom(
+        this.httpService
+          .get(`${this.historicalURL}?lat=${lat}&lon=${lon}&dt=${unixTimestamp}&units=${this.metric}&appid=${this.apiKey}`)
+          .pipe(
+            map((obj: AxiosResponse) => obj.data),
+            tap((data) => console.log(data[0]))
+          )
+      )
+      return respondeData;
+    } catch (error) {
+      throw new HttpException(`${error.response.data.message}`, HttpStatus.BAD_REQUEST);;
+    }
+  }
 }
