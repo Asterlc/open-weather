@@ -6,9 +6,11 @@ export class CountyServiceService {
   constructor(
     @InjectModel('County') private readonly countyModel: Model<any>
   ) { }
+  // /\bpalavra\b/i
   async getCountyByName(name: string) {
     try {
-      const query = name.length > 0 ? { 'countyName': { $regex: name, $options: 'i' } } : {};
+      const query = name.length > 0 ? { 'countyName': { $regex: `.*${name.trim()}*.`, $options: 'i' } } : {};
+      console.log('query :>> ', query);
       const responseData = await this.countyModel.find(query).exec();
       return responseData;
     } catch (error) {
