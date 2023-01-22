@@ -8,10 +8,10 @@ export class WeatherServiceService {
     private httpService: HttpService,
   ) { }
 
-  private currentURL: string = `${process.env.CURRENT_URL}`;
   private historicalURL: string = `${process.env.HISTORICAL_URL}`;
   private apiKey: string = `${process.env.API_KEY}`;
   private metric = 'metric' //Celsius
+  private apiCall = "https://api.openweathermap.org/data/3.0/onecall"
 
   async getForecast(lat: string, lon: string) {
     try {
@@ -19,7 +19,7 @@ export class WeatherServiceService {
       const responseData = await lastValueFrom(
         this.httpService
           .get(
-            `${this.currentURL}?lat=${lat}&lon=${lon}&lang=pt_br&units=${this.metric}&${exclude}&appid=${this.apiKey}`,
+            `${this.apiCall}?lat=${lat}&lon=${lon}&lang=pt_br&units=${this.metric}&${exclude}&appid=${this.apiKey}`,
           )
           .pipe(
             map((obj: AxiosResponse) => obj.data),
@@ -28,7 +28,7 @@ export class WeatherServiceService {
       );
       return responseData;
     } catch (error) {
-      throw new HttpException(`${error.response.data.message}`, HttpStatus.BAD_REQUEST);
+      throw new HttpException({}, HttpStatus.BAD_REQUEST);
     }
   }
 

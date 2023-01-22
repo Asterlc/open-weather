@@ -11,7 +11,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     TasksModule,
     ConfigModule.forRoot({
-      envFilePath: [`.env.prod` || '.env.dev'],
+      envFilePath: [".env"],
     }),
     MongooseModule.forRoot(
       `${process.env.MONGODB_URI}`,
